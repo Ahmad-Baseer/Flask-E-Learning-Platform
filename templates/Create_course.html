@@ -1,0 +1,70 @@
+{% include"header.html" %}
+
+<style type="text/css">
+	h3{color : #08085e;}
+  textarea { max-width: 50%; 
+              margin-left: 30px;
+                }
+                .flashes {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flashes li {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Styling for error messages */
+.flashes .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+</style>
+<h3><b>Create Course</b></h3><br>
+<div class="container">
+	<form action="" role="form" method="post" enctype="multipart/form-data">
+	 <div class="row">
+    <div class="col">
+      <h3><b>Title</b></h3>
+      <input type="text" class="form-control" name="title">
+    </div>
+    <div class="col">
+      <h3><b>Image</b></h3>
+      <input type="file" name="image"><br>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flashes">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+    </div>
+  </div>
+
+
+
+</div>
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;<b>Introduction</b></h3>
+    <textarea class="form-control"  rows="3" name="intro"></textarea>
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;<b>Requiremment</b></h3>
+    <textarea class="form-control"  rows="3" cols="10" name="Requiremment"></textarea>
+    <h3>&nbsp;&nbsp;&nbsp;&nbsp;<b>Difficulty</b><i class='fas fa-signal' style='font-size:24px'></i></h3>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="Difficulty">
+      <option>Easy</option>
+      <option>Medium</option>
+      <option>Hard</option>
+    </select>
+    
+<br>
+<button type="submit" class="btn btn-primary  active" data_but="btn-xs" style="margin-left: 500px;"><b>Publish</b> <i class='fa fa-check'></i></button>
+
+
+</form>   
+</div>
